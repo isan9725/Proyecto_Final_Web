@@ -1,51 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+    <title>Foro</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/home.css">
-    <title>Contratar</title>
+    <link rel="stylesheet" href="../../css/home.css">
+
+
+
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-    <?php
-
+<?php
         session_start();
 
         if(!isset($_SESSION["usuario"])){
-            header("location:../modulos/Login.html");
+            header("location:../../modulos/Login.html");
         }
-        if(isset($_POST["id_servicio"])){
-            $id_servicio = $_POST["id_servicio"];
-        }
-
-    ?>
-    <nav class="navbar navbar-default navbar-fixed-top">
+?>
+<nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>                        
-                        </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
                 <a class="navbar-brand" href="#myPage">Logo</a>
                 <form action="busqueda_registrados.php" method="POST" class="navbar-form navbar-left" role="form">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+                    <div class="form-group">  
+                        <input class="form-control" type="text" name="busqueda" id="busqueda" placeholder="Buscar">             
                     </div>
                     <button class="btn btn-default" type="submit" name="btn_busqueda" id="btn_busqueda">Buscar</button>
                 </form>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="home_registrados.php">HOME</a></li>
+                    <li><a href="#myPage">HOME</a></li>
                     <li><a href="#contact">Servicios Destacados</a></li>-
                     <li><a href="#band">Acerca De Nosotros</a></li>
                     <li class="dropdown">
@@ -70,51 +68,46 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["usuario"];?><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["usuario"];?><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
                             <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
-                        </ul>
+                    </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+<br><br><br><br>
+    <p>Participa, siéntete libre de escribir un mensaje en este foro de discusión o de responder a un mensaje del mismo. Aportando tu opinión enriqueces este sitio.</p> <br>
+    <div>
+        <div>
+            <a href="../home_registrados.php">Regresar</a>
+        </div>
 
-    <div class="container">
-        <form role="form" method="POST" action="mandar_contratacion.php" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="Nombre">Nombre: </label>
-                <input type="text" class="form-control" name="nombre_usuario" placeholder="Nombre Quien Envia El Email">
-                <input type="hidden" name="datos_de_sesion">
-            </div>
-            <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" name="apeliido" id="apellido" placeholder="Apelliedo de Quien Envia el Email">
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="id_servicio" value="<?php echo $id_servicio ?>">
-            </div>
-            <div class="form-group">
-                <label for="numero-telefonico">Número Telefonico</label>
-                <input type="text" class="form-control" id="numero-telefono" name="numero-telefono" placeholder="Ingresa tu Número de Contacto">
-            </div>
-            <div class="form-group">
-                <label for="asunto">Asunto: </label>
-                <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto">
-            </div>
-            <div class="form-group">
-                <label for="mensaje">Mensaje</label>
-                <textarea class="form-control" name="mensaje" id="mensaje" cols="30" rows="3" placeholder="Escribe tu mensaje..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-default">Enviar</button>
+        <form method="post" enctype="multipart/form-data" name="personal" id="personal">
+
+
+            <div align="center">
+                <fieldset style="width: 250px;">
+                    <div align="center">
+                        <p class="pEnlace"> <strong> <h4> Foros sobre...</p> </strong> </div>
+                    </h4>
+
+
+                    <div align="center">
+
+                        <a href="indexplomeria.php">Plomería</a><br> <br>
+                        <a href="indexlimpieza.php">Limpieza</a> <br> <br>
+                        <a href="indexelectricidad.php">Electricidad</a> <br> <br>
+                        <a href="indexfumigacion.php">Fumigación</a> <br> <br>
+                        <a href="indexlavanderia.php">Lavandería</a>
+                    </div>
+                </fieldset>
+
         </form>
-    </div>
 
-
-
-
-
-    <!-- Footer -->
+        </div>
+        <!-- Footer -->
     <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
             <span class="glyphicon glyphicon-chevron-up"></span>
@@ -124,7 +117,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.dropdown a.test').on("click", function(e) {
+            $('.dropdown a.test').on("click", function(e){
                 $(this).next('ul').toggle();
                 e.stopPropagation();
                 e.preventDefault();
@@ -157,7 +150,6 @@
             });
         })
     </script>
-
 </body>
 
 </html>

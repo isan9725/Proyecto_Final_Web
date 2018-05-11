@@ -49,7 +49,7 @@
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="agregarServicio.php">Ofrecer Servicio</a></li>
                             <li><a tabindex="-1" href="modificar_servicios.php">Modificar Servicios</a></li>
-                            <li><a tabindex="-1" href="#">Ayuda</a></li>
+                            <li><a tabindex="-1" href="Foro/header.php">Ayuda</a></li>
                             <li class="divider"></li>
                             <li>
                                 <!--Obersar que es lo que pasa cuando se llama a la misma pagina con el href si no la vuelve a cargar con la nueva peticion

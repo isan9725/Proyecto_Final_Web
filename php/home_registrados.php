@@ -51,7 +51,7 @@
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="agregarServicio.php">Ofrecer Servicio</a></li>
                             <li><a tabindex="-1" href="modificar_servicios.php">Modificar Servicios</a></li>
-                            <li><a tabindex="-1" href="#">Ayuda</a></li>
+                            <li><a tabindex="-1" href="Foro/header.php">Ayuda</a></li>
                             <li class="divider"></li>
                             <li>
                                 <a class="test" href="#">Categorias <span class="caret"></span></a>
