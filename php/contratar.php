@@ -52,19 +52,19 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="agregarServicio.php">Ofrecer Servicio</a></li>
-                            <li><a tabindex="-1" href="modificarServicios.php">Modificar Servicios</a></li>
+                            <li><a tabindex="-1" href="modificar_servicios.php">Modificar Servicios</a></li>
                             <li><a tabindex="-1" href="#">Ayuda</a></li>
                             <li class="divider"></li>
                             <li>
                                 <a class="test" href="#">Categorias <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="busqueda.php?categoria=fumigaciones">Fumigaciones</a></li>
-                                    <li><a href="busqueda.php?categoria=niniera">Niñera</a></li>
-                                    <li><a href="busqueda.php?categoria=lavanderia">Lavanderia</a></li>
-                                    <li><a href="busqueda.php?categoria=podado">Podado de Cesped</a></li>
-                                    <li><a href="busqueda.php?categoria=decoracion">Decoración de Interiores</a></li>
-                                    <li><a href="busqueda.php?categoria=asesorias">Asesorías</a></li>
-                                    <li><a href="busqueda.php?categoria=ayudas">Ayudas</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=fumigaciones">Fumigaciones</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=niniera">Niñera</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=lavanderia">Lavanderia</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=podado">Podado de Cesped</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=decoracion">Decoración de Interiores</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=asesorias">Asesorías</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=ayudas">Ayudas</a></li>
                                 </ul>
                             </li>
                         </ul>

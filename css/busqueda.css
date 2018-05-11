@@ -74,6 +74,12 @@ div h2.lead {
     top: 126px;
 }
 
+.search-result span.plus-primary {
+    position: absolute;
+    top: 126px;
+    right: 130px;
+}
+
 .search-result span.plus a {
     background-color: #248dc1;
     padding: 5px 5px 3px 5px;
@@ -92,4 +98,9 @@ div h2.lead {
     width: 97%;
     margin: 0 15px;
     border-bottom: 1px dotted #ccc;
+}
+
+.image-found {
+    width: 250px;
+    height: 250px;
 }

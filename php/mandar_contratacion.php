@@ -1,5 +1,5 @@
 <?php
-    require "operacionesSQL.php";
+    require "operacionesSQL_Contratacion.php";
     session_start();
 
     if(!isset($_SESSION["usuario"])){

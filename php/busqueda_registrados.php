@@ -17,7 +17,7 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
     <?php
-        require "operacionesSQL.php";
+        require "operacionesSQL_Busqueda.php";
 
         session_start();
 
@@ -43,7 +43,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#myPage">HOME</a></li>
+                    <li><a href="home_registrados.php">HOME</a></li>
                     <li><a href="#contact">Servicios Destacados</a></li>-
                     <li><a href="#band">Acerca De Nosotros</a></li>
                     <li class="dropdown">
@@ -84,7 +84,7 @@
         if($_SERVER['REQUEST_METHOD'] == "GET"){
             $busqueda = $_GET["categoria"];
 
-            $consultar_busqueda = new operacionesSQL();
+            $consultar_busqueda = new operacionesSQL_Busqueda();
 
             $tamanio_pagina=4;
 
@@ -123,7 +123,7 @@
                             <section>
                                 <div class="row search-result">
                                     <div class="col-md-3">
-                                        <a href="#" class="thumbnail"><img src="..." alt="..."></a>
+                                        <a href="#" class="thumbnail"><img class="image-found" src="/img/uploads/<?php $ruta_img = $resultado['FOTO']; echo $ruta_img; ?>" alt="..."></a>
                                     </div>
                                     <div class="col-md-2">
                                         <ul class="meta-search">
@@ -159,7 +159,7 @@
             if(isset($_POST["busqueda"])){
                 $busqueda = $_POST["busqueda"];
 
-                $consultar_busqueda = new operacionesSQL();
+                $consultar_busqueda = new operacionesSQL_Busqueda();
 
                 $tamanio_pagina=4;
 
@@ -198,7 +198,7 @@
                                 <section>
                                     <div class="row search-result">
                                         <div class="col-md-3">
-                                            <a href="#" class="thumbnail"><img src="..." alt="..."></a>
+                                            <a href="#" class="thumbnail"><img class="image-found" src="/img/uploads/<?php $ruta_img = $resultado['FOTO']; echo $ruta_img; ?>" alt="..." ></a>
                                         </div>
                                         <div class="col-md-2">
                                             <ul class="meta-search">

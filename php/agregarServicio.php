@@ -48,7 +48,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="agregarServicio.php">Ofrecer Servicio</a></li>
-                            <li><a tabindex="-1" href="modificarServicios.php">Modificar Servicios</a></li>
+                            <li><a tabindex="-1" href="modificar_servicios.php">Modificar Servicios</a></li>
                             <li><a tabindex="-1" href="#">Ayuda</a></li>
                             <li class="divider"></li>
                             <li>

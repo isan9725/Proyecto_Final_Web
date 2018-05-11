@@ -18,7 +18,7 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
     <?php
 
-    require "operacionesSQL.php";
+    require "operacionesSQL_Busqueda.php";
     ?>
     
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>                        
                 </button>
                 <a class="navbar-brand" href="#myPage">Logo</a>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="navbar-form navbar-left" role="form">
+                <form action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="POST" class="navbar-form navbar-left" role="form">
                     <div class="form-group">
                         <input class="form-control" type="text" name="busqueda" id="busqueda" placeholder="Buscar">
                     </div>
@@ -39,8 +39,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#myPage">HOME</a></li>
-                    <!--<li><a href="#tour">Algo</a></li>-->
+                    <li><a href="../index.html">HOME</a></li>
                     <li><a href="#contact">Servicios Destacados</a></li>-
                     <li><a href="#band">Acerca De Nosotros</a></li>
                     <li class="dropdown">
@@ -88,11 +87,9 @@
 
     if($_SERVER['REQUEST_METHOD'] == "GET"){
 
-        if(isset($_GET["categoria"])){
-            $busqueda = $_GET["categoria"];
-        }
+        $busqueda = $_GET["categoria"];
 
-        $consultar_busqueda = new operacionesSQL();
+        $consultar_busqueda = new operacionesSQL_Busqueda();
 
         $tamanio_pagina=4;
 
@@ -131,7 +128,7 @@
                             <section>
                                 <div class="row search-result">
                                     <div class="col-md-3">
-                                        <a href="#" class="thumbnail"><img src="..." alt="..."></a>
+                                        <a href="#" class="thumbnail"><img class="image-found" src="/img/uploads/<?php $ruta_img = $resultado['FOTO']; echo $ruta_img; ?>" alt="..." ></a>
                                     </div>
                                     <div class="col-md-2">
                                         <ul class="meta-search">
@@ -143,11 +140,9 @@
                                     <div class="col-md-7">
                                         <h3><?php $titulo = htmlentities($resultado['TITULO']); echo $titulo; ?></h3>
                                         <p><?php $descripcion = htmlentities($resultado['DESCRIPCION']); echo $descripcion; ?></p>
-                                        <form action="contratar.php" method="POST">
-                                            <input type="hidden" name="<?php $id = htmlentities($resultado['ID_SERVICIO']); echo $id; ?>">
-                                            <span class="plus"><button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Contratar</button>
+                                            <span class="plus"><a href="../modulos/Login.html" class="btn btn-default"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Contratar</a>
                                             </span>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </section>
@@ -166,7 +161,7 @@
         if(isset($_POST["busqueda"])){
             $busqueda = $_POST["busqueda"];
 
-            $consultar_busqueda = new operacionesSQL();
+            $consultar_busqueda = new operacionesSQL_Busqueda();
 
             $tamanio_pagina=4;
 
@@ -182,14 +177,14 @@
 
             $empezar_desde = ($pagina-1)*$tamanio_pagina;
 
-            $num_filas = $consultar_busqueda->consultar_Filas_Servicios_Por_Categorias($busqueda);
+            $num_filas = $consultar_busqueda->consultar_Filas_Servicios($busqueda);
 
             $total_pagina = ceil($num_filas/$tamanio_pagina);
 
             echo $num_filas . $tamanio_pagina . $total_pagina;
 
             
-            $resultados = $consultar_busqueda->consultar_Servicios_Por_Categorias_Limite($busqueda,$tamanio_pagina,$empezar_desde);
+            $resultados = $consultar_busqueda->consultar_Servicios_Limite($busqueda,$tamanio_pagina,$empezar_desde);
 
             if(is_array($resultados)){
                 foreach($resultados as $resultado){
@@ -205,7 +200,7 @@
                             <section>
                                 <div class="row search-result">
                                     <div class="col-md-3">
-                                        <a href="#" class="thumbnail"><img src="..." alt="..."></a>
+                                        <a href="#" class="thumbnail"><img class="image-found" src="/img/uploads/<?php $ruta_img = $resultado['FOTO']; echo $ruta_img; ?>" alt="..."></a>
                                     </div>
                                     <div class="col-md-2">
                                         <ul class="meta-search">

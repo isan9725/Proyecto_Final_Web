@@ -17,7 +17,7 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 <?php
-        require "operacionesSQL.php";
+        require "operacionesSQL_Modificacion.php";
         session_start();
 
         if(!isset($_SESSION["usuario"])){
@@ -43,9 +43,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#myPage">HOME</a></li>
-                    <li><a href="#contact">Servicios Destacados</a></li>-
-                    <li><a href="#band">Acerca De Nosotros</a></li>
+                    <li><a href="home_registrados.php">HOME</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -80,7 +78,7 @@
     <?php
         $usuario = $_SESSION["usuario"];
 
-        $consultar_busqueda = new operacionesSQL();
+        $consultar_busqueda = new operacionesSQL_Modificacion();
 
         $tamanio_pagina=4;
 
@@ -120,7 +118,7 @@
                         <section>
                             <div class="row search-result">
                                 <div class="col-md-3">
-                                    <a href="#" class="thumbnail"><img src="..." alt="..."></a>
+                                    <a href="#" class="thumbnail"><img class="image-found" src="/img/uploads/<?php $ruta_img = $resultado['FOTO']; echo $ruta_img; ?>" alt="..."></a>
                                 </div>
                                 <div class="col-md-2">
                                     <ul class="meta-search">
@@ -133,11 +131,12 @@
                                     <h3><?php $titulo = htmlentities($resultado['TITULO']); echo $titulo; ?></h3>
                                     <p><?php $descripcion = htmlentities($resultado['DESCRIPCION']); echo $descripcion; ?></p>
                                     <form action="detalles_modificar.php" method="POST">
-                                        <input type="hidden" value="<?php $id_producto = htmlentities($resultado['ID_SERVICIO']); ?>" name="id_servicio">
-                                        <span class="plus"><button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Actualizar</button></span>
+                                        <input type="hidden" value="<?php $id_producto = htmlentities($resultado['ID_SERVICIO']); echo $id_producto; ?>" name="id_servicio">
+                                        <span class="plus-primary"><button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Actualizar</button></span>
                                     </form>
+                                    <br/>
                                     <form action="eliminar_servicios.php" method="post">
-                                        <input type="hidden" value="<?php $id_producto = htmlentities($resultado['ID_SERVICIO']); ?>" name="id_servicio">
+                                        <input type="hidden" value="<?php $id_producto = htmlentities($resultado['ID_SERVICIO']); echo $id_producto; ?>" name="id_servicio">
                                         <span class="plus"><button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Eliminar</button></span>
                                     </form>
                                 </div>

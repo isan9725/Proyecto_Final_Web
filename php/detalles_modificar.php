@@ -16,7 +16,7 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 <?php
-        require "operacionesSQL.php";
+        require "operacionesSQL_Modificacion.php";
 
         session_start();
 
@@ -43,9 +43,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#myPage">HOME</a></li>
-                    <li><a href="#contact">Servicios Destacados</a></li>-
-                    <li><a href="#band">Acerca De Nosotros</a></li>
+                    <li><a href="home_registrados.php">HOME</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -79,7 +77,7 @@
     </nav>
         <?php
         if(isset($_POST["id_servicio"])){
-            $busqueda = new operacionesSQL();
+            $busqueda = new operacionesSQL_Modificacion();
             $id_servicio = $_POST["id_servicio"];
             $resultado = $busqueda->obtener_Servicios_Usuario($id_servicio);
 
@@ -87,6 +85,7 @@
                 <div class="container">
                     <form role="form" method="POST" action="mensajero_servicios_modificar.php" enctype="multipart/form-data">
                         <div class="form-group">
+                            <label for="tipo">Tipo De Servicio Ofrecido: </label>
                             <label for="tipo_de_servicio"><?php echo $resultado["TIPO_DE_SERVICIO"]; ?></label>
                             <input type="hidden" name="id_servicio" value="<?php echo $id_servicio; ?>">
                         </div>
