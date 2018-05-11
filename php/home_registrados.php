@@ -11,10 +11,19 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <?php
+        session_start();
+
+        if(!isset($_SESSION["usuario"])){
+            header("location:../modulos/Login.html");
+        }
+
+    ?>
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -25,9 +34,9 @@
                     <span class="icon-bar"></span>                        
                 </button>
                 <a class="navbar-brand" href="#myPage">Logo</a>
-                <form action="php/busqueda_noregistrados.php" method="POST" class="navbar-form navbar-left" role="form">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="busqueda" id="busqueda" placeholder="Buscar">
+                <form action="busqueda_registrados.php" method="POST" class="navbar-form navbar-left" role="form">
+                    <div class="form-group">  
+                        <input class="form-control" type="text" name="busqueda" id="busqueda" placeholder="Buscar">             
                     </div>
                     <button class="btn btn-default" type="submit" name="btn_busqueda" id="btn_busqueda">Buscar</button>
                 </form>
@@ -35,45 +44,35 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#myPage">HOME</a></li>
-                    <!--<li><a href="#tour">Algo</a></li>-->
                     <li><a href="#contact">Servicios Destacados</a></li>-
                     <li><a href="#band">Acerca De Nosotros</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="modulos/Login.html">Ofrecer Servicio</a></li>
-                            <li><a tabindex="-1" href="modulos/Login.html">Modificar Servicios</a></li>
+                            <li><a tabindex="-1" href="agregarServicio.php">Ofrecer Servicio</a></li>
+                            <li><a tabindex="-1" href="modificar_servicios.php">Modificar Servicios</a></li>
                             <li><a tabindex="-1" href="#">Ayuda</a></li>
                             <li class="divider"></li>
                             <li>
                                 <a class="test" href="#">Categorias <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=fumigaciones">Fumigaciones</a>
-                                    </li>
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=niniera">Niñera</a>
-                                    </li>
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=lavanderia">Lavanderia</a>
-                                    </li>
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=podado">Podado de Cesped</a>
-                                    </li>
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=decoracion">Decoración de Interiores</a>
-                                    </li>
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=asesorias">Asesorías</a>
-                                    </li>
-                                    <li>
-                                        <a href="php/busqueda_noregistrados.php?categoria=ayudas">Ayudas</a>
-                                    </li>
+                                    <li><a href="busqueda_registrados.php?categoria=fumigaciones">Fumigaciones</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=niniera">Niñera</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=lavanderia">Lavanderia</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=podado">Podado de Cesped</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=decoracion">Decoración de Interiores</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=asesorias">Asesorías</a></li>
+                                    <li><a href="busqueda_registrados.php?categoria=ayudas">Ayudas</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="modulos/Login.html"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                    <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["usuario"];?><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                            <li><a href="cerrar_sesion.php">Cerrar Sesión</a></li>
+                    </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -90,7 +89,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="img/Decoracion.png" alt="New York" width="1200" height="700">
+                <img src="../img/Decoracion.png" alt="New York" width="1200" height="700">
                 <div class="carousel-caption">
                     <h3>Decoraciones De Interiores</h3>
                     <p>The atmosphere in New York is lorem ipsum.</p>
@@ -98,7 +97,7 @@
             </div>
 
             <div class="item">
-                <img src="img/limpiar-casas.jpg" alt="Chicago" width="1200" height="700">
+                <img src="../img/limpiar-casas.jpg" alt="Chicago" width="1200" height="700">
                 <div class="carousel-caption">
                     <h3>Limpieza</h3>
                     <p>Casas Relucientes</p>
@@ -106,7 +105,7 @@
             </div>
 
             <div class="item">
-                <img src="img/fumigar.jpg" alt="Los Angeles" width="1200" height="700">
+                <img src="../img/fumigar.jpg" alt="Los Angeles" width="1200" height="700">
                 <div class="carousel-caption">
                     <h3>Fumigaciones</h3>
                     <p>Deshaste de la molesta plaga!</p>
@@ -135,22 +134,22 @@
             <div class="row image-thubs">
                 <div class="col-sm-6 col-md-3">
                     <a href="#" class="thumbnail">
-                        <img src="img/se1.jpg" alt="..."><i class="text-thum">Limpieza Hogareña</i>
+                        <img src="../img/se1.jpg" alt="..."><i class="text-thum">Limpieza Hogareña</i>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <a href="#" class="thumbnail">
-                        <img src="img/se2.jpg" alt="..."><i class="text-thum">Preparación De Comidas</i>
+                        <img src="../img/se2.jpg" alt="..."><i class="text-thum">Preparación De Comidas</i>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <a href="#" class="thumbnail">
-                        <img src="img/se3.jpg" alt="..."><i class="text-thum">Lavanderia</i>
+                        <img src="../img/se3.jpg" alt="..."><i class="text-thum">Lavanderia</i>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <a href="#" class="thumbnail">
-                        <img src="img/se4.jpg" alt="..."><i class="text-thum">Niñera</i>
+                        <img src="../img/se4.jpg" alt="..."><i class="text-thum">Niñera</i>
                     </a>
                 </div>
             </div>
@@ -193,7 +192,7 @@
             <div class="col-sm-4">
                 <p class="text-center"><strong>Seguridad</strong></p><br>
                 <a href="#demo" data-toggle="collapse">
-                    <img src="img/seguridad.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+                    <img src="../img/seguridad.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
                 </a>
                 <div id="demo" class="collapse">
                     <p>Garantizar Proteccón de información</p>
@@ -203,7 +202,7 @@
             <div class="col-sm-4">
                 <p class="text-center"><strong>Calidad</strong></p><br>
                 <a href="#demo2" data-toggle="collapse">
-                    <img src="img/calidad.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                    <img src="../img/calidad.png" class="img-circle person" alt="Random Name" width="255" height="255">
                 </a>
                 <div id="demo2" class="collapse">
                     <p>Servicios de Calidad</p>
@@ -213,7 +212,7 @@
             <div class="col-sm-4">
                 <p class="text-center"><strong>Date a Conocer</strong></p><br>
                 <a href="#demo3" data-toggle="collapse">
-                    <img src="img/date-a-conocer.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+                    <img src="../img/date-a-conocer.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
                 </a>
                 <div id="demo3" class="collapse">
                     <p>Ofrece tus servicios rapidamente</p>
@@ -234,7 +233,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.dropdown a.test').on("click", function(e) {
+            $('.dropdown a.test').on("click", function(e){
                 $(this).next('ul').toggle();
                 e.stopPropagation();
                 e.preventDefault();

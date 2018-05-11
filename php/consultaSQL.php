@@ -11,6 +11,17 @@
 
 <body>
     <?php
+
+        require "operacionesSQL.php";
+
+        $usuario = htmlentities(addslashes($_POST["usuario"]));
+        $password = htmlentities(addslashes($_POST["password"]));
+
+        $login = new operacionesSQL();
+
+        $login->validar_Login($usuario,$password);
+
+
         /*$mysqli = new mysqli('localhost', 'root', '', 'Proyecto_Final');
         if($mysqli->connect_errno){
             echo "Fallo al conectar a MySQL: " . $mysqli->connect_error;
@@ -34,7 +45,7 @@
             }else{
                 header("location:../modulos/Login.html");
             }
-        }*/
+        }
 
         try{
             $base = new PDO("mysql:host=localhost; dbname=proyecto_final", "root", "");
@@ -61,7 +72,7 @@
 
         }catch(Exception $e){
             die("Error: " . $e->getMessage());
-        }
+        }*/
 
        
 

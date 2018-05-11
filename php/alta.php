@@ -24,19 +24,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="../index.html">HOME</a></li>
-                    <!--<li><a href="#tour">Algo</a></li>-->
-                    <li><a href="#contact">Servicios Destacados</a></li>-
-                    <li><a href="#band">Acerca De Nosotros</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios
-          <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Contratar Servicio</a></li>
-                            <li><a href="#">Ofrecer Servicio</a></li>
-                            <li><a href="#">Ayuda</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../modulos/Login.html"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                    <li><a href="../modulos/Login.html"><span class="glyphicon glyphicon-plus"></span>Login</a></li>
                 </ul>
             </div>
         </div>
@@ -44,30 +32,91 @@
 
 <div class="container">
   <h2>Crear Cuenta</h2>
-  <form>
+  <form name="altaUsuario" action="" method="post" enctype="multipart/form-data" id="altaUsuario">
   <div class="form-group">
       <label for="nombre">Nombre</label>
-      <input type="text" class="form-control" id="nombre" placeholder="Ingresa Tu Nombre">
+      <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresa Tu Nombre">
     </div>
   <div class="form-group">
       <label for="apellido">Apellido</label>
-      <input type="text" class="form-control" id="apellido" placeholder="Ingresa Tu Apellido">
+      <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingresa Tu Apellido">
     </div>
   <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Ingresa Tu correo">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa Tu correo">
     </div>
     <div class="form-group">
       <label for="usuario">Usuario</label>
-      <input type="text" class="form-control" id="usuario" placeholder="Ingresa Tu usuario">
+      <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa Tu usuario">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Ingresa Tu password">
+      <input type="password" class="form-control" id="pwd" name="password" placeholder="Ingresa Tu password">
     </div>
     <button type="submit" class="btn btn-default">Crear Cuenta</button>
   </form>
 </div>
+<?php
+require "operacionesSQL.php";
+
+if(isset($_POST["usuario"]) && isset($_POST["password"]) && isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["email"])){
+    $usuario = htmlentities(addslashes($_POST["usuario"]));
+    $password = htmlentities(addslashes($_POST["password"]));
+    $nombre = htmlentities(addslashes($_POST["nombre"]));
+    $apellido = htmlentities(addslashes($_POST["apellido"]));
+    $email = htmlentities(addslashes($_POST["email"]));
+
+    $agregarUsuario = new operacionesSQL();
+
+    $agregarUsuario->insertar_Usuario($usuario,$password,$nombre,$apellido,$email);
+}
+
+
+
+
+/*try{
+    $base = new PDO("mysql:host=localhost; dbname=proyecto_final", "root", "");
+    $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $base->exec("SET CHARACTER SET utf8");
+
+    $sql = "SELECT * FROM usuarios_pass WHERE USUARIO=:usuario AND PASSWORD= :password";
+    $sqlInsercion = "INSERT INTO usuarios_pass (ID, USUARIO, PASSWORD, NOMBRE, APELLIDO, EMAIL) VALUES (NULL,:usuario,:password,:nombre,:apellido,:email)";
+
+    $resultado = $base->prepare($sqlInsercion);
+    if(isset($_POST["usuario"]) && isset($_POST["password"]) && isset($_POST["nombre"]) && isset($_POST["apellido"]) && isset($_POST["email"])){
+        $usuario = htmlentities(addslashes($_POST["usuario"]));
+        $password = htmlentities(addslashes($_POST["password"]));
+        $nombre = htmlentities(addslashes($_POST["nombre"]));
+        $apellido = htmlentities(addslashes($_POST["apellido"]));
+        $email = htmlentities(addslashes($_POST["email"]));
+
+        $resultado->bindValue(":usuario",$usuario);
+        $resultado->bindValue(":password",$password);
+        $resultado->bindValue(":nombre",$nombre);
+        $resultado->bindValue(":apellido",$apellido);
+        $resultado->bindValue(":email",$email);
+
+        $resultado->execute();
+
+        if($resultado){
+           ?>
+            <script type="text/javascript">alert('Cuenta Agregada Con Exito');</script>
+            <?php  
+            header("location:../index.html");
+        }
+        else{
+
+        }
+
+    }   
+}catch(Exception $e){
+    die("Error: " . $e->getMessage());
+}finally{
+    $base = null;
+}*/
+
+
+?>
 
 <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
